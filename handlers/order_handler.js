@@ -44,7 +44,7 @@ async function updateOneOrder(req, res){
     const orderId = req.params.id;
     const updateData = req.body;
     const updatedOrder = await orderUsecase.updateOneOrder(orderId, updateData);
-    res.json(updatedOrder);
+    res.json({ message: "Order updated successfully", updatedOrder});
     
   } catch (error) {
     console.error(error);
@@ -56,8 +56,8 @@ async function updateOneOrder(req, res){
 async function deleteOneOrder(req, res) {
   try {
     const orderId = req.params.id;
-    const order = await orderUsecase.deleteOneOrder(orderId);
-    res.json(order);
+    const deletedOrder = await orderUsecase.deleteOneOrder(orderId);
+    res.json({ message: "Order deleted successfully", deletedOrder });
     
   } catch (error) {
     console.error(error);

@@ -46,7 +46,7 @@ async function updateOneRole(req, res){
     const roleId = req.params.id;
     const role = req.body;
     const updatedRole = await roleUsecase.updateOneRole(roleId, role);
-    res.json(updatedRole);
+    res.json({ message: "Role updated successfully", updatedRole});
 
   } catch (error) {
     console.error(error);
@@ -58,8 +58,8 @@ async function updateOneRole(req, res){
 async function deleteOneRole(req, res){
   try {
     const roleId = req.params.id;
-    const role = await roleUsecase.deleteOneRole(roleId);
-    res.json(role);
+    const deletedRole = await roleUsecase.deleteOneRole(roleId);
+    res.json({ message: "Role deleted successfully", deletedRole });
 
   } catch (error) {
     console.error(error);

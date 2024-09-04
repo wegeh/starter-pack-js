@@ -77,8 +77,8 @@ async function updateOne(req, res) {
 async function deleteOneUser(req, res){
   try {
     const userId = req.params.id;
-    const user = await userUsecase.deleteOneUser(userId);
-    res.json(user);
+    const deletedUser = await userUsecase.deleteOneUser(userId);
+    res.json({ message: "User deleted successfully", deletedUser });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error', message: error.message });
