@@ -14,14 +14,20 @@ router.post("/user/register", userHandler.register);
 router.get("/user", userHandler.getList);
 router.get("/user/:id", userHandler.getOneByUserId);
 router.put("/user/:id", userHandler.updateOne);
+router.delete("/user/:id", userHandler.deleteOneUser);
 
 // Role routes
 router.post("/role", roleHandler.create);
 router.get("/role", roleHandler.getList);
+router.get("/role/:id", roleHandler.getOne);
+router.put("/role/:id", roleHandler.updateOneRole);
+router.delete("/role/:id", roleHandler.deleteOneRole);
 
 // Order routes
 router.post("/order", jwtAuth, orderHandler.create);
 router.get("/order", authenticatePassportJwt(), orderHandler.getList);
 router.get("/order/:id", authenticatePassportJwt(), orderHandler.getOneByOrderId);
+router.put("/order/:id", authenticatePassportJwt(), orderHandler.updateOneOrder);
+router.delete("/order/:id", authenticatePassportJwt(), orderHandler.deleteOneOrder);
 
 module.exports = router;
