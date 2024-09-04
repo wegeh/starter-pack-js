@@ -39,11 +39,11 @@ async function getOneByOrderId(req, res) {
 }
 
 // Handler to update an order
-async function updateOne(req, res){
+async function updateOneOrder(req, res){
   try {
     const orderId = req.params.id;
     const updateData = req.body;
-    const updatedOrder = await orderUsecase.updateOne(orderId, updateData);
+    const updatedOrder = await orderUsecase.updateOneOrder(orderId, updateData);
     res.json(updatedOrder);
     
   } catch (error) {
@@ -53,10 +53,10 @@ async function updateOne(req, res){
 }
 
 // Handler to delete an order
-async function deleteOne(req, res) {
+async function deleteOneOrder(req, res) {
   try {
     const orderId = req.params.id;
-    const order = await orderUsecase.deleteOneByOrderId(orderId);
+    const order = await orderUsecase.deleteOneOrder(orderId);
     res.json(order);
     
   } catch (error) {
@@ -64,4 +64,4 @@ async function deleteOne(req, res) {
     res.status(500).json({ error: 'Internal Server Error', message: error.message });
   }
 }
-module.exports = { create, getList, getOneByOrderId, updateOne, deleteOne };
+module.exports = { create, getList, getOneByOrderId, updateOneOrder, deleteOneOrder };

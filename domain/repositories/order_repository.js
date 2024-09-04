@@ -40,7 +40,7 @@ async function findAll() {
 }
 
 // Function to update 
-async function updateOne(orderId, updateData){
+async function updateOneOrder(orderId, updateData){
   try{
     const existingOrder = await Order.findOne({ order_id: orderId });
 
@@ -57,7 +57,7 @@ async function updateOne(orderId, updateData){
 }
 
 // Function to delete
-async function deleteOne(orderId){
+async function deleteOneOrder(orderId){
   try {
     const existingOrder = await Order.findOneAndDelete({ order_id: orderId });
 
@@ -72,4 +72,4 @@ async function deleteOne(orderId){
   }
 }
 
-module.exports = { create, getOneByOrderId, findAll, updateOne, deleteOne };
+module.exports = { create, getOneByOrderId, findAll, updateOneOrder, deleteOneOrder };

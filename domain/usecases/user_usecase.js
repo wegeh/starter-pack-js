@@ -172,9 +172,9 @@ async function updateOne(updateData) {
   }
 }
 
-async function deleteOne(userId) {
+async function deleteOneUser(userId) {
   try {
-    const user = await repository.deleteOne(userId);
+    const user = await repository.deleteOneUser(userId);
     return user;
 
   } catch (error) {
@@ -183,4 +183,4 @@ async function deleteOne(userId) {
   }
 }
 
-module.exports = {getOneByUserId, getOneByEmail, getList, register, login, updateOne, deleteOne};
+module.exports = {getOneByUserId, getOneByEmail, getList, register, login, updateOne, deleteOneUser};

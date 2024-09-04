@@ -81,9 +81,9 @@ async function updateOne(userId, updateData) {
 }
 
 // Function to delete
-async function deleteOne(userId){
+async function deleteOneUser(userId){
   try {
-    const existingUser = await Order.findOneAndDelete({ user_id: userId });
+    const existingUser = await User.findOne({ user_id: userId });
     if (!existingUser) {
       throw new Error('User not found');
     }
@@ -94,4 +94,4 @@ async function deleteOne(userId){
     throw error;
   }
 }
-module.exports = { findOneByUserId, findOneByEmail, findAll, create, updateOne, deleteOne };
+module.exports = { findOneByUserId, findOneByEmail, findAll, create, updateOne, deleteOneUser };

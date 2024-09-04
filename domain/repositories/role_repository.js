@@ -52,7 +52,7 @@ async function findAll() {
 }
 
 // Function to update
-async function updateOne(roleId, updateData){
+async function updateOneRole(roleId, updateData){
   try {
     const existingRole = await Role.findOne({ role_id: roleId });
 
@@ -69,7 +69,7 @@ async function updateOne(roleId, updateData){
 }
 
 // Function to delete
-async function deleteOne(roleId){
+async function deleteOneRole(roleId){
   try {
     const existingRole = await Role.findOneAndDelete({ role_id: roleId });
     if (!existingRole) {
@@ -83,4 +83,4 @@ async function deleteOne(roleId){
   }
 }
 
-module.exports = { create, getOneByRoleId, getOneByName, findAll, updateOne, deleteOne };
+module.exports = { create, getOneByRoleId, getOneByName, findAll, updateOneRole, deleteOneRole };

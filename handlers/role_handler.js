@@ -41,11 +41,11 @@ async function getOne(req, res){
 }
 
 // Handler to update a role
-async function updateOne(req, res){
+async function updateOneRole(req, res){
   try {
     const roleId = req.params.id;
     const role = req.body;
-    const updatedRole = await roleUsecase.updateOne(roleId, role);
+    const updatedRole = await roleUsecase.updateOneRole(roleId, role);
     res.json(updatedRole);
 
   } catch (error) {
@@ -55,10 +55,10 @@ async function updateOne(req, res){
 }
 
 // Handler to delete a role
-async function deleteOne(req, res){
+async function deleteOneRole(req, res){
   try {
     const roleId = req.params.id;
-    const role = await roleUsecase.deleteOne(roleId);
+    const role = await roleUsecase.deleteOneRole(roleId);
     res.json(role);
 
   } catch (error) {
@@ -67,4 +67,4 @@ async function deleteOne(req, res){
   }
 }
 
-module.exports = { create, getList, getOne, updateOne, deleteOne };
+module.exports = { create, getList, getOne, updateOneRole, deleteOneRole };
