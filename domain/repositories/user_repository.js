@@ -87,6 +87,11 @@ async function deleteOneUser(userId){
     if (!existingUser) {
       throw new Error('User not found');
     }
+    
+    await User.deleteOne({
+      user_id: userId
+    });
+
     return existingUser;
 
   } catch (error) {
