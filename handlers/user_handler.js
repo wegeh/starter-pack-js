@@ -73,4 +73,17 @@ async function updateOne(req, res) {
   }
 }
 
-module.exports = { getOneByUserId, getOneByEmail, getList, register, login, updateOne };
+// Handler to delete a user
+async function deleteOne(req, res){
+  try {
+    const userId = req.params.id;
+    const user = await userUsecase.deleteOne(userId);
+    res.json(user);
+    
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error', message: error.message });
+  }
+}
+
+module.exports = { getOneByUserId, getOneByEmail, getList, register, login, updateOne, deleteOne };

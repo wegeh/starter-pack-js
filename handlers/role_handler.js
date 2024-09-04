@@ -27,4 +27,44 @@ async function getList(req, res) {
   }
 }
 
-module.exports = { create, getList };
+// Handler to get a role
+async function getOne(req, res){
+  try {
+    const roleId = req.params.id;
+    const role = await roleUsecase.getOne(roleId);    
+    res.json(role);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error', message: error.message });
+  }
+}
+
+// Handler to update a role
+async function updateOne(req, res){
+  try {
+    const roleId = req.params.id;
+    const role = req.body;
+    const updatedRole = await roleUsecase.updateOne(roleId, role);
+    res.json(updatedRole);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error', message: error.message });
+  }
+}
+
+// Handler to delete a role
+async function deleteOne(req, res){
+  try {
+    const roleId = req.params.id;
+    const role = await roleUsecase.deleteOne(roleId);
+    res.json(role);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error', message: error.message });
+  }
+}
+
+module.exports = { create, getList, getOne, updateOne, deleteOne };

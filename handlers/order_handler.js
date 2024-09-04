@@ -38,4 +38,30 @@ async function getOneByOrderId(req, res) {
   }
 }
 
-module.exports = { create, getList, getOneByOrderId };
+// Handler to update an order
+async function updateOne(req, res){
+  try {
+    const orderId = req.params.id;
+    const updateData = req.body;
+    const updatedOrder = await orderUsecase.updateOne(orderId, updateData);
+    res.json(updatedOrder);
+    
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error', message: error.message });
+  }
+}
+
+// Handler to delete an order
+async function deleteOne(req, res) {
+  try {
+    const orderId = req.params.id;
+    const order = await orderUsecase.deleteOneByOrderId(orderId);
+    res.json(order);
+    
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error', message: error.message });
+  }
+}
+module.exports = { create, getList, getOneByOrderId, updateOne, deleteOne };
